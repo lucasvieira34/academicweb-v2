@@ -5,7 +5,6 @@ import lombok.Data;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -26,12 +25,6 @@ public class Aluno {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_usuario", referencedColumnName = "id", unique = true)
     private Usuario usuario;
-
-    @ManyToMany
-    @JoinTable(name = "AlunosTurmas", uniqueConstraints = @UniqueConstraint(columnNames = { "id_aluno", "id_turma" }),
-            joinColumns = @JoinColumn(name = "id_aluno"),
-            inverseJoinColumns = @JoinColumn(name = "id_turma"))
-    private List<Turma> turmas;
 
     @OneToMany(mappedBy = "aluno")
     Set<AlunoDisciplina> extratos;

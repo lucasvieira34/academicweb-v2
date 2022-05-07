@@ -16,8 +16,12 @@ public class Turma {
     private String codigo;
 
     @ManyToMany
-    @JoinTable(name = "AlunosTurmas", uniqueConstraints = @UniqueConstraint(columnNames = { "id_aluno", "id_turma" }),
+    @JoinTable(name = "ProfessoresTurmas", uniqueConstraints = @UniqueConstraint(columnNames = { "id_professor", "id_turma" }),
     joinColumns = @JoinColumn(name = "id_turma"),
-    inverseJoinColumns = @JoinColumn(name = "id_aluno"))
-    private List<Aluno> alunos;
+    inverseJoinColumns = @JoinColumn(name = "id_professor"))
+    private List<Professor> professores;
+
+    //IMPLEMENTAR TURMA - PROFESSOR
+    // ENRICHMENT - TURMA
+    // ITEMS - ALUNOS
 }

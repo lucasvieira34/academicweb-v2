@@ -30,4 +30,10 @@ public class Professor {
     joinColumns = @JoinColumn(name = "id_professor"),
     inverseJoinColumns = @JoinColumn(name = "id_disciplina"))
     private List<Disciplina> disciplinas;
+
+    @ManyToMany
+    @JoinTable(name = "ProfessoresTurmas", uniqueConstraints = @UniqueConstraint(columnNames = { "id_professor", "id_turma" }),
+            joinColumns = @JoinColumn(name = "id_professor"),
+            inverseJoinColumns = @JoinColumn(name = "id_turma"))
+    private List<Turma> turmas;
 }
