@@ -26,6 +26,10 @@ public class Aluno {
     @JoinColumn(name = "id_usuario", referencedColumnName = "id", unique = true)
     private Usuario usuario;
 
+    @ManyToOne
+    @JoinColumn(name = "id_turma")
+    private Turma turma;
+
     @OneToMany(mappedBy = "aluno")
     Set<AlunoDisciplina> extratos;
 }

@@ -21,6 +21,9 @@ public class Turma {
     inverseJoinColumns = @JoinColumn(name = "id_professor"))
     private List<Professor> professores;
 
+    @OneToMany(mappedBy = "turma")
+    private List<Aluno> alunos;
+
     //IMPLEMENTAR TURMA - PROFESSOR
     // ENRICHMENT - TURMA
     // ITEMS - ALUNOS
