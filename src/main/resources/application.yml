@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/academicweb
+    username: root
+    password: root
