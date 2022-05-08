@@ -16,6 +16,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final LoginService loginService;
+    private final SuccessLoginHandler successLoginHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -30,9 +31,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/js/**",
                             "/vendor/**",
                             "/resources/**").permitAll()
+                .antMatchers("/secretaria/**").hasRole("SECRETARIA")
                     .anyRequest().authenticated()
                 .and()
-                    .formLogin().permitAll().loginPage("/login")
+                    .formLogin().permitAll().loginPage("/login").successHandler(successLoginHandler)
                 .and()
                     .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout").permitAll();
