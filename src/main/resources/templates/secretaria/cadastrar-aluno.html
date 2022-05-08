@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{fragments/layout-secretaria}">
+
+<head>
+  <title>Portal Escolar Academic - Cadastro Aluno</title>
+</head>
+
+<body>
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid" layout:fragment="corpo">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Cadastro de Aluno</h1>
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+
+            <div class="col-lg-12 mb-4">
+            
+            	<div th:if="${param.success}">
+	                <div class="alert alert-info">
+	                    Aluno registrado com sucesso!
+	                </div>
+	            </div>
+
+              <form class="col s12" th:object="${cadastrarAlunoModel}" th:action="@{/secretaria/cadastrar/aluno}" enctype="multipart/form-data" method="POST">
+              
+              	<p class="error-message"
+                   th:if="${#fields.hasGlobalErrors()}"
+                   th:each="error : ${#fields.errors('global')}"
+                   th:text="${error}">Validation error</p>
+
+                  <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" th:field="*{nome}" class="form-control" id="nome" name="nome" th:classappend="${#fields.hasErrors('nome')}? 'is-invalid':''">
+                    <p class="error-message"
+                       th:each="error: ${#fields.errors('nome')}"
+                       th:text="${error}">Nome incorreto</p>
+                    <small class="form-text text-muted">
+                    Insira o nome completo do aluno.
+                    </small>
+                  </div>
+                <div class="form-group">
+                  <label for="cpf">CPF</label>
+                  <input type="text" th:field="*{cpf}" class="form-control" id="cpf" name="cpf" th:classappend="${#fields.hasErrors('cpf')}? 'is-invalid':''">
+                  <p class="error-message"
+                       th:each="error : ${#fields.errors('cpf')}"
+                       th:text="${error}">CPF incorreto</p>
+                  <small class="form-text text-muted">
+                  Insira o CPF do aluno.
+                  </small>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" th:field="*{email}" class="form-control" id="email" name="email" th:classappend="${#fields.hasErrors('email')}? 'is-invalid':''">
+                  <p class="error-message"
+                     th:each="error : ${#fields.errors('email')}"
+                     th:text="${error}">Email incorreto</p>
+                  <small class="form-text text-muted">
+                    Insira o email do aluno.
+                  </small>
+                </div>
+                <div class="form-group">
+                  <label for="dataNascimento">Data de Nascimento</label>
+                  <input type="date" th:field="*{dataNascimento}" class="form-control" id="dataNascimento" name="dataNascimento" th:classappend="${#fields.hasErrors('dataNascimento')}? 'is-invalid':''">
+                  <p class="error-message"
+                       th:each="error : ${#fields.errors('dataNascimento')}"
+                       th:text="${error}">Data incorreta</p>
+                  <small class="form-text text-muted">
+                  Insira a data de nascimento do aluno.
+                  </small>
+                </div>
+                <div class="form-group">
+                  <label for="matricula">Matrícula</label>
+                  <input type="text" th:field="*{matricula}" class="form-control" id="matricula" name="matricula" th:classappend="${#fields.hasErrors('matricula')}? 'is-invalid':''">
+                  <p class="error-message"
+                       th:each="error : ${#fields.errors('matricula')}"
+                       th:text="${error}">Matricula incorreta</p>
+                  <small class="form-text text-muted">
+                  Insira a matrícula do aluno. A matrícula deverá seguir o padrão: 20XXAAAABBB, onde XX é o ano da matrícula e AAAABBB um número aleatório.
+                  </small>
+                </div>
+                <div class="form-group">
+                  <label for="emailResponsavel">Email do Responsável</label>
+                  <input type="email" th:field="*{emailResponsavel}" class="form-control" id="emailResponsavel" name="emailResponsavel" th:classappend="${#fields.hasErrors('emailResponsavel')}? 'is-invalid':''">
+                  <p class="error-message"
+                       th:each="error : ${#fields.errors('emailResponsavel')}"
+                       th:text="${error}">Nome incorreto</p>
+                  <small class="form-text text-muted">
+                  Insira o email do responsável (pai/mãe).
+                  </small>
+                </div>
+                <div class="form-group">
+                  <label for="mensalidade">Mensalidade</label>
+                  <input type="number" th:field="*{mensalidade}" class="form-control" id="mensalidade" name="mensalidade" th:classappend="${#fields.hasErrors('mensalidade')}? 'is-invalid':''">
+                  <p class="error-message"
+                       th:each="error : ${#fields.errors('mensalidade')}"
+                       th:text="${error}">Nome incorreto</p>
+                  <small class="form-text text-muted">
+                  Insira o valor da mensalidade.
+                  </small>
+                </div>
+                <div class="form-group">
+                  <label for="image">Foto de Perfil</label>
+                  <input type="file" class="form-control-file" id="imagem" name="fileUsuario" required>
+                </div>
+
+                <button type="submit" class="btn botao-cor-principal personalizado">Cadastrar</button>
+
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+</body>
+
+</html>

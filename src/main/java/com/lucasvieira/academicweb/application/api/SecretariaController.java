@@ -1,5 +1,6 @@
 package com.lucasvieira.academicweb.application.api;
 
+import com.lucasvieira.academicweb.application.model.CadastrarAlunoModel;
 import com.lucasvieira.academicweb.application.service.*;
 import com.lucasvieira.academicweb.domain.entity.Usuario;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,6 +27,11 @@ public class SecretariaController {
 
     private Usuario usuarioLogado;
 
+    @ModelAttribute("cadastrarAlunoModel")
+    public CadastrarAlunoModel cadastrarAlunoModel() {
+        return new CadastrarAlunoModel();
+    }
+
     @GetMapping("/dashboard")
     public ModelAndView dashboard() {
         usuarioLogado();
@@ -37,6 +44,14 @@ public class SecretariaController {
         mv.addObject("totalMensalidades", alunoService.totalMensalidades());
         mv.addObject("totalSalarios", professorService.totalSalarios());
         mv.addObject("balancoMensal", 0); //TODO IMPLEMENTAR FUNCIONARIOS
+        return mv;
+    }
+
+    @GetMapping("/cadastrar/aluno")
+    public ModelAndView viewCadastrarAluno() {
+        usuarioLogado();
+        ModelAndView mv = new ModelAndView("secretaria/cadastrar-aluno");
+        mv.addObject("usuarioLogado", usuarioLogado);
         return mv;
     }
 
