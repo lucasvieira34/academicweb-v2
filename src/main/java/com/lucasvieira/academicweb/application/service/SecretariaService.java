@@ -55,6 +55,7 @@ public class SecretariaService {
             alunoDisciplina.setId(alunoDisciplinaPK);
             alunoDisciplinaRepository.save(alunoDisciplina);
         }
+        // TODO IMPLEMENTAR TOKEN E ENVIO DE EMAIL
     }
 
     private static String gerarSenha(){

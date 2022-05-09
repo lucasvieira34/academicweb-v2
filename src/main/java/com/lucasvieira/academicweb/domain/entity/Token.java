@@ -5,11 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 @Entity
-public class Token {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Token extends BaseEntity {
 
     @Column(nullable = false)
     private Date expiration;

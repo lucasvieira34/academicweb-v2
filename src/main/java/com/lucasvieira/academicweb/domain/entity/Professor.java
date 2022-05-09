@@ -10,11 +10,8 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "professor")
-public class Professor {
+public class Professor extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String matricula;
     private String nome;
     private String cpf;
