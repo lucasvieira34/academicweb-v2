@@ -1,11 +1,13 @@
 package com.lucasvieira.academicweb.domain.entity;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
 
-@Data
 @Entity
+@Data
+@Builder
 public class AlunoDisciplina {
 
     @EmbeddedId

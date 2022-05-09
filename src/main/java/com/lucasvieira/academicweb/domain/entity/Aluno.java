@@ -1,15 +1,21 @@
 package com.lucasvieira.academicweb.domain.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Set;
 
-@Data
 @Entity
 @Table(name = "aluno")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Aluno {
 
     @Id

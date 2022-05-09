@@ -1,14 +1,20 @@
 package com.lucasvieira.academicweb.domain.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
-@Data
 @Entity
 @Table(name = "disciplina")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Disciplina {
 
     @Id

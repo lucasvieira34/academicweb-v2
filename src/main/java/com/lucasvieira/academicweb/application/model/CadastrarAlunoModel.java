@@ -9,7 +9,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 public class CadastrarAlunoModel {
@@ -25,10 +25,10 @@ public class CadastrarAlunoModel {
     private String cpf;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
 
     @DecimalMin(value = "0", message = "A mensalidade precisa ser maior que zero.")
-    private BigDecimal mensalidade;
+    private BigDecimal valorMensalidade;
 
     @NotEmpty(message = "O email do responsável não pode estar vazio.")
     @Email(message = "Este email não é válido.")
@@ -37,4 +37,7 @@ public class CadastrarAlunoModel {
     @NotEmpty(message = "O email do aluno não pode estar vazio.")
     @Email(message = "Este email não é válido.")
     private String email;
+
+    @NotEmpty(message = "O turma não pode estar vazia.")
+    private Long idTurma;
 }

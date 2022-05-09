@@ -75,13 +75,16 @@
                   </small>
                 </div>
                 <div class="form-group">
-                  <label for="matricula">Matrícula</label>
-                  <input type="text" th:field="*{matricula}" class="form-control" id="matricula" name="matricula" th:classappend="${#fields.hasErrors('matricula')}? 'is-invalid':''">
-                  <p class="error-message"
-                       th:each="error : ${#fields.errors('matricula')}"
-                       th:text="${error}">Matricula incorreta</p>
+                  <label for="inputState">Turmas</label>
+                  <select class="form-control" id="idTurma" name="idTurma">
+                    <option value="" disabled selected>Selecione a turma...</option>
+                    <option th:each="turma : ${turmas}"
+                            th:value="${turma.id}"
+                            th:text="${turma.codigo}">
+                    </option>
+                  </select>
                   <small class="form-text text-muted">
-                  Insira a matrícula do aluno. A matrícula deverá seguir o padrão: 20XXAAAABBB, onde XX é o ano da matrícula e AAAABBB um número aleatório.
+                    Selecione a turma na qual deseja incluir o aluno.
                   </small>
                 </div>
                 <div class="form-group">
@@ -96,9 +99,9 @@
                 </div>
                 <div class="form-group">
                   <label for="mensalidade">Mensalidade</label>
-                  <input type="number" th:field="*{mensalidade}" class="form-control" id="mensalidade" name="mensalidade" th:classappend="${#fields.hasErrors('mensalidade')}? 'is-invalid':''">
+                  <input type="number" th:field="*{valorMensalidade}" class="form-control" id="valorMensalidade" name="valorMensalidade" th:classappend="${#fields.hasErrors('valorMensalidade')}? 'is-invalid':''">
                   <p class="error-message"
-                       th:each="error : ${#fields.errors('mensalidade')}"
+                       th:each="error : ${#fields.errors('valorMensalidade')}"
                        th:text="${error}">Nome incorreto</p>
                   <small class="form-text text-muted">
                   Insira o valor da mensalidade.

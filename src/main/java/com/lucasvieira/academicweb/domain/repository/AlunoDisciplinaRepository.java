@@ -1,10 +1,9 @@
 package com.lucasvieira.academicweb.domain.repository;
 
-import com.lucasvieira.academicweb.domain.entity.Role;
+import com.lucasvieira.academicweb.domain.entity.AlunoDisciplina;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoleRepository extends JpaRepository<Role, Long> {
-    Role findByNome(String role);
+public interface AlunoDisciplinaRepository extends JpaRepository<AlunoDisciplina, Long> {
 }
